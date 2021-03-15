@@ -37,6 +37,7 @@ body {
     display: flex;
     width: 100%;
     font-size: 26px;
+    
 }
 label textarea {
     width: 100%;
@@ -47,11 +48,12 @@ label textarea {
     padding: 0px 10px;
     margin-bottom: 15px;
     resize: none;
+    outline: #CCC;
 }
 #notes button {
     font-size: 20px;
     background-color: #AAA;
-    
+    outline: #CCC;
 }
 #noteSaved {
     width: 100%;
@@ -69,20 +71,7 @@ label textarea {
     padding-right: 25px;
 }
 #noteSaved div p {
-   height: 50px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
 }
-
-
-
-/*
-#noteSaved div p:hover {
-    position: absolute;
-    max-width: 400px;
-    top: 20%;
-    left: 25%;
-    transform: translate(50%, 50%);
-    overflow: visible;
-    height: auto;
-
-}*/

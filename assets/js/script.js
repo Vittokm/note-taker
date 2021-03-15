@@ -1,13 +1,18 @@
 let i = 1;
 
-function add() {
 
+function add() {
+    let vazio = "";
     let txt = document.getElementById("txt");
     let saves = document.querySelector("#noteSaved");
     let note = document.createElement("DIV");
     let saveTit = document.createElement("H3");
     let noteTxt = document.createElement("P");
-    var viewButton = document.createElement("BUTTON");
+    let viewButton = document.createElement("BUTTON");
+
+    if (txt.value == vazio) {
+        alert("No text found!")
+    } else {
     saves.appendChild(note);
     note.appendChild(saveTit);  
     note.appendChild(noteTxt);
@@ -17,24 +22,32 @@ function add() {
     saveTit.innerHTML = "Note " + i;
     noteTxt.innerHTML = txt.value;
     txt.value = "";
-    i++
+    i++}
 
 }
 
-function seeNote(x) {
+function seeNote(botao) {
 
-    let par = x.parentElement.querySelector("P");
+    let par = botao.previousSibling;
+    par.setAttribute("onclick", "clean(this)");
     let darkLayer = document.querySelector("#main");
     let notes = document.querySelector("#notes");
-
+    
     darkLayer.style.cssText = "background-color: rgba(0, 0, 0, 0.6); transition: all 1s ease-in;";
-    par.style.cssText = "position: static; top: 30%; left: 70%; overflow: visible; height: auto; transform: scale(2); transition: all 1s ease-in; background-color: #EEE; box-shadow: 0px 0px 20px #FFF";
+    par.style.cssText = "position: absolute; z-index: 99; border-radius: 20px; padding: 15px; max-width: 400px; white-space: normal; text-overflow: clip; background-color: #EEE; box-shadow: 0px 0px 20px #FFF; transform: scale(2); transition: all 2s ease-in-out;";
+    notes.querySelector("TEXTAREA").style.cssText = "background-color: #555; transition: all 2s ease-in-out;";
 
-    notes.querySelector("TEXTAREA").style.backgroundColor = "#555";
     
 }
 
-function clean() {
-    
-    
+
+
+function clean(par) {
+
+    let notes = document.querySelector("#notes");
+    let darkLayer = document.querySelector("#main");
+
+    par.style.cssText = "position: retative; z-index: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; transform: scale(1); transition: all 1s ease-in-out; background-color: #CCC; box-shadow: 0px 0px 0px #CCC;";
+    darkLayer.style.cssText = "transition: all 2s ease-in-out; background-color: #CCC; box-shadow: 0px 0px 0px #CCC;";
+    notes.querySelector("TEXTAREA").style.cssText = "background-color: #FFF; transition: all 2s ease-in-out;";
 }
