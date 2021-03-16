@@ -9,6 +9,7 @@ function add() {
     let saveTit = document.createElement("H3");
     let noteTxt = document.createElement("P");
     let viewButton = document.createElement("BUTTON");
+    let delButton = document.createElement("BUTTON");
 
     if (txt.value == vazio) {
         alert("No text found!")
@@ -17,8 +18,11 @@ function add() {
     note.appendChild(saveTit);  
     note.appendChild(noteTxt);
     note.appendChild(viewButton);
+    note.appendChild(delButton);
     viewButton.innerHTML = "View Note";
+    delButton.innerHTML = "Delete";
     viewButton.setAttribute("onclick", "seeNote(this)");
+    delButton.setAttribute("onclick", "del(this)");
     saveTit.innerHTML = "Note " + i;
     noteTxt.innerHTML = txt.value;
     txt.value = "";
@@ -50,4 +54,8 @@ function clean(par) {
     par.style.cssText = "position: retative; z-index: 0; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; transform: scale(1); transition: all 1s ease-in-out; background-color: #CCC; box-shadow: 0px 0px 0px #CCC;";
     darkLayer.style.cssText = "transition: all 2s ease-in-out; background-color: #CCC; box-shadow: 0px 0px 0px #CCC;";
     notes.querySelector("TEXTAREA").style.cssText = "background-color: #FFF; transition: all 2s ease-in-out;";
+}
+
+function del(x) {
+    x.parentElement.remove();
 }
