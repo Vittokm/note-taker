@@ -1,4 +1,4 @@
 # note-taker
  An app to take and keep notes.
 
-  [Check it here]()
+  [Check it here]( https://vittokm.github.io/note-taker/)
